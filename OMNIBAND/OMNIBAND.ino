@@ -13,6 +13,7 @@ This an Arduino project. It's Best Way to Get Started with your PulseSensor™ &
 
 
 //Testing 1234 Hello this is Gian.
+// Testing as Gian from Gian's computer
 
 //  Variables
 int PulseSensorPurplePin = 0;        // Pulse Sensor PURPLE WIRE connected to ANALOG PIN 0
