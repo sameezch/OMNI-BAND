@@ -54,6 +54,12 @@ int Threshold = 550;            // Determine which Signal to "count as a beat", 
 void setup() {
   pinMode(LED13,OUTPUT);         // pin that will blink to your heartbeat!
    Serial.begin(9600);         // Set's up Serial Communication at certain speed. 
+
+   //For Temp Sensor
+   Serial.println("Adafruit MLX90614 test");  
+
+   mlx.begin();  
+   //
    
 }
 
@@ -84,13 +90,7 @@ delay(10);
 
 
 
-void setup() {
-  Serial.begin(9600);
 
-  Serial.println("Adafruit MLX90614 test");  
-
-  mlx.begin();  
-}
 
 void loop() {
   Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempC()); 
