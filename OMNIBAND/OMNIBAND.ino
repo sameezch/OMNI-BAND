@@ -80,19 +80,8 @@ void loop() {
 
 
 delay(10);
-   
-   
-}
 
-
-
-
-
-
-
-
-
-void loop() {
+   // For Temp Sensor
   Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempC()); 
   Serial.print("*C\tObject = "); Serial.print(mlx.readObjectTempC()); Serial.println("*C");
   Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempF()); 
@@ -100,7 +89,18 @@ void loop() {
 
   Serial.println();
   delay(500);
+  //
+   
 }
+
+
+
+
+
+
+
+
+
 
 
 /*************************************************** 
