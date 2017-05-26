@@ -55,7 +55,7 @@ void setup() {
   pinMode(LED13,OUTPUT);         // pin that will blink to your heartbeat!
    Serial.begin(9600);         // Set's up Serial Communication at certain speed. 
 
-   //For Temp Sensor
+   // For Temp Sensor
    Serial.println("Adafruit MLX90614 test");  
 
    mlx.begin();  
