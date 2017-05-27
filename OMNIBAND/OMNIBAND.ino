@@ -11,9 +11,35 @@ This an Arduino project. It's Best Way to Get Started with your PulseSensor™ &
 6) "Human-readable" code that is newbie friendly." 
 */
 
+/*************************************************** 
+  This is a library example for the MLX90614 Temp Sensor
+
+  Designed specifically to work with the MLX90614 sensors in the
+  adafruit shop
+  ----> https://www.adafruit.com/products/1748
+  ----> https://www.adafruit.com/products/1749
+
+  These sensors use I2C to communicate, 2 pins are required to  
+  interface
+  Adafruit invests time and resources providing this open source code, 
+  please support Adafruit and open-source hardware by purchasing 
+  products from Adafruit!
+
+  Written by Limor Fried/Ladyada for Adafruit Industries.  
+  BSD license, all text above must be included in any redistribution
+ ****************************************************/
 
 //Testing 1234 Hello this is Gian.
 // Testing as Gian from Gian's computer
+
+// For Temp Sensor
+#include <Wire.h>
+#include <Adafruit_MLX90614.h>
+
+Adafruit_MLX90614 mlx = Adafruit_MLX90614();
+//
+
+
 
 //  Variables
 int PulseSensorPurplePin = 0;        // Pulse Sensor PURPLE WIRE connected to ANALOG PIN 0
@@ -28,6 +54,12 @@ int Threshold = 550;            // Determine which Signal to "count as a beat", 
 void setup() {
   pinMode(LED13,OUTPUT);         // pin that will blink to your heartbeat!
    Serial.begin(9600);         // Set's up Serial Communication at certain speed. 
+
+   // For Temp Sensor
+   Serial.println("Adafruit MLX90614 test");  
+
+   mlx.begin();  
+   //
    
 }
 
@@ -48,8 +80,61 @@ void loop() {
 
 
 delay(10);
-   
+
+   // For Temp Sensor
+  Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempC()); 
+  Serial.print("*C\tObject = "); Serial.print(mlx.readObjectTempC()); Serial.println("*C");
+  Serial.print("Ambient = "); Serial.print(mlx.readAmbientTempF()); 
+  Serial.print("*F\tObject = "); Serial.print(mlx.readObjectTempF()); Serial.println("*F");
+
+  Serial.println();
+  delay(500);
+  //
    
 }
 
 
+
+
+
+
+
+
+
+
+
+/*************************************************** 
+ *  Adafruit_LSM303DLHC Accelerometer + Compass deprecated example test code
+ */
+//#include <Wire.h>
+//#include <Adafruit_Sensor.h>
+//#include <Adafruit_LSM303.h>
+
+//Adafruit_LSM303 lsm;
+
+//void setup()
+//{
+//#ifndef ESP8266
+//  while (!Serial);     // will pause Zero, Leonardo, etc until serial console opens
+//#endif
+//  Serial.begin(9600);
+
+//  // Try to initialise and warn if we couldn't detect the chip
+//  if (!lsm.begin())
+//  {
+//    Serial.println("Oops ... unable to initialize the LSM303. Check your wiring!");
+//    while (1);
+//  }
+//}
+
+//void loop()
+//{
+//  lsm.read();
+//  Serial.print("AX: "); Serial.print((int)lsm.accelData.x); Serial.print(" ");
+//  Serial.print("AY: "); Serial.print((int)lsm.accelData.y); Serial.print(" ");
+//  Serial.print("AZ: "); Serial.print((int)lsm.accelData.z); Serial.print(" ");
+//  Serial.print("MX: "); Serial.print((int)lsm.magData.x);   Serial.print(" ");
+//  Serial.print("MY: "); Serial.print((int)lsm.magData.y);   Serial.print(" ");
+//  Serial.print("MZ: "); Serial.println((int)lsm.magData.z); Serial.print(" ");
+//  delay(100);
+//}
