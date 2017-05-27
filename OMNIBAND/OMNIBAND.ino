@@ -100,6 +100,20 @@ delay(10);
   Serial.println();
   delay(500);
   //
+
+  // For Accelerometer
+  #ifndef ESP8266
+  while (!Serial);     // will pause Zero, Leonardo, etc until serial console opens
+#endif
+  Serial.begin(9600);
+
+  // Try to initialise and warn if we couldn't detect the chip
+  if (!lsm.begin())
+  {
+    Serial.println("Oops ... unable to initialize the LSM303. Check your wiring!");
+    while (1);
+  }
+  //
    
 }
 
@@ -113,29 +127,11 @@ delay(10);
 
 
 
-/*************************************************** 
- *  Adafruit_LSM303DLHC Accelerometer + Compass deprecated example test code
- */
-#include <Wire.h>
-#include <Adafruit_Sensor.h>
-#include <Adafruit_LSM303.h>
 
-Adafruit_LSM303 lsm;
 
-void setup()
-{
-#ifndef ESP8266
-  while (!Serial);     // will pause Zero, Leonardo, etc until serial console opens
-#endif
-  Serial.begin(9600);
 
-  // Try to initialise and warn if we couldn't detect the chip
-  if (!lsm.begin())
-  {
-    Serial.println("Oops ... unable to initialize the LSM303. Check your wiring!");
-    while (1);
-  }
-}
+
+
 
 void loop()
 {
