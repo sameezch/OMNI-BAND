@@ -43,7 +43,13 @@ This an Arduino project. It's Best Way to Get Started with your PulseSensor™ &
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 //
 
+// For Accelerometer
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_LSM303.h>
 
+Adafruit_LSM303 lsm;
+//
 
 //  Variables
 int PulseSensorPurplePin = 0;        // Pulse Sensor PURPLE WIRE connected to ANALOG PIN 0
