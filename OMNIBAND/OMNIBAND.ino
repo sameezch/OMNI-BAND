@@ -33,9 +33,6 @@ This an Arduino project. It's Best Way to Get Started with your PulseSensor™ &
  *  Adafruit_LSM303DLHC Accelerometer + Compass deprecated example test code
  */
 
-//Testing 1234 Hello this is Gian.
-// Testing as Gian from Gian's computer
-
 // For Temp Sensor
 #include <Wire.h>
 #include <Adafruit_MLX90614.h>
