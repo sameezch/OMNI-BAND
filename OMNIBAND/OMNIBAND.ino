@@ -36,23 +36,18 @@ This an Arduino project. It's Best Way to Get Started with your PulseSensor™ &
 // For Temp Sensor
 #include <Wire.h>
 #include <Adafruit_MLX90614.h>
-
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 //
-
 // For Accelerometer
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_LSM303.h>
-
 Adafruit_LSM303 lsm;
 //
 
 //  Variables
 int PulseSensorPurplePin = 0;        // Pulse Sensor PURPLE WIRE connected to ANALOG PIN 0
 int LED13 = 13;   //  The on-board Arduion LED
-
-
 int Signal;                // holds the incoming raw data. Signal value can range from 0-1024
 int Threshold = 550;            // Determine which Signal to "count as a beat", and which to ingore. 
 
