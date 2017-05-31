@@ -29,23 +29,25 @@ This an Arduino project. It's Best Way to Get Started with your PulseSensor™ &
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-//Testing 1234 Hello this is Gian.
-// Testing as Gian from Gian's computer
+ /*************************************************** 
+ *  Adafruit_LSM303DLHC Accelerometer + Compass deprecated example test code
+ */
 
 // For Temp Sensor
 #include <Wire.h>
 #include <Adafruit_MLX90614.h>
-
 Adafruit_MLX90614 mlx = Adafruit_MLX90614();
 //
-
-
+// For Accelerometer
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include <Adafruit_LSM303.h>
+Adafruit_LSM303 lsm;
+//
 
 //  Variables
 int PulseSensorPurplePin = 0;        // Pulse Sensor PURPLE WIRE connected to ANALOG PIN 0
 int LED13 = 13;   //  The on-board Arduion LED
-
-
 int Signal;                // holds the incoming raw data. Signal value can range from 0-1024
 int Threshold = 550;            // Determine which Signal to "count as a beat", and which to ingore. 
 
@@ -60,7 +62,20 @@ void setup() {
 
    mlx.begin();  
    //
-   
+
+     // For Accelerometer
+  #ifndef ESP8266
+  while (!Serial);     // will pause Zero, Leonardo, etc until serial console opens
+  #endif
+  Serial.begin(9600);
+
+  // Try to initialise and warn if we couldn't detect the chip
+  if (!lsm.begin())
+  {
+    Serial.println("Oops ... unable to initialize the LSM303. Check your wiring!");
+    while (1);
+  }
+  //
 }
 
 // The Main Loop Function
@@ -90,51 +105,15 @@ delay(10);
   Serial.println();
   delay(500);
   //
-   
+  
+  // For Accelerometer
+  lsm.read();
+  Serial.print("AX: "); Serial.print((int)lsm.accelData.x); Serial.print(" ");
+  Serial.print("AY: "); Serial.print((int)lsm.accelData.y); Serial.print(" ");
+  Serial.print("AZ: "); Serial.print((int)lsm.accelData.z); Serial.print(" ");
+  Serial.print("MX: "); Serial.print((int)lsm.magData.x);   Serial.print(" ");
+  Serial.print("MY: "); Serial.print((int)lsm.magData.y);   Serial.print(" ");
+  Serial.print("MZ: "); Serial.println((int)lsm.magData.z); Serial.print(" ");
+  delay(100);
+  //
 }
-
-
-
-
-
-
-
-
-
-
-
-/*************************************************** 
- *  Adafruit_LSM303DLHC Accelerometer + Compass deprecated example test code
- */
-//#include <Wire.h>
-//#include <Adafruit_Sensor.h>
-//#include <Adafruit_LSM303.h>
-
-//Adafruit_LSM303 lsm;
-
-//void setup()
-//{
-//#ifndef ESP8266
-//  while (!Serial);     // will pause Zero, Leonardo, etc until serial console opens
-//#endif
-//  Serial.begin(9600);
-
-//  // Try to initialise and warn if we couldn't detect the chip
-//  if (!lsm.begin())
-//  {
-//    Serial.println("Oops ... unable to initialize the LSM303. Check your wiring!");
-//    while (1);
-//  }
-//}
-
-//void loop()
-//{
-//  lsm.read();
-//  Serial.print("AX: "); Serial.print((int)lsm.accelData.x); Serial.print(" ");
-//  Serial.print("AY: "); Serial.print((int)lsm.accelData.y); Serial.print(" ");
-//  Serial.print("AZ: "); Serial.print((int)lsm.accelData.z); Serial.print(" ");
-//  Serial.print("MX: "); Serial.print((int)lsm.magData.x);   Serial.print(" ");
-//  Serial.print("MY: "); Serial.print((int)lsm.magData.y);   Serial.print(" ");
-//  Serial.print("MZ: "); Serial.println((int)lsm.magData.z); Serial.print(" ");
-//  delay(100);
-//}
