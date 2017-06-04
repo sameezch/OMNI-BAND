@@ -22,6 +22,7 @@ String val;
 import controlP5.*;
 
 ControlP5 cp5;
+Slider2D s;
 
 DropdownList d1;
 public int slider1 = 32;
