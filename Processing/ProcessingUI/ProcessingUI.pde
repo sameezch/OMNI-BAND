@@ -146,7 +146,6 @@ void draw() {
 
 
 //Serial draw method
-import processing.serial.*;
 
 Serial myPort;  
 String val; 
