@@ -1,5 +1,7 @@
 import processing.serial.*;
-Serial port;
+//from omni.pde
+Serial myPort;  
+String val; 
 /**
  *
  * DEPRECATED, use ScrollableList instead.
