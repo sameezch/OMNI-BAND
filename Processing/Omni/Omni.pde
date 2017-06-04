@@ -9,7 +9,7 @@ void setup()
   
   
   size(500,500);
-  String portName = Serial.list()[3]; 
+  String portName = Serial.list()[2]; 
   myPort = new Serial(this, portName, 9600);
 }
 
