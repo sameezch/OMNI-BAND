@@ -1,5 +1,8 @@
 import processing.serial.*;
 Serial port;
+
+Serial myPort;  
+String val; 
 /**
  *
  * DEPRECATED, use ScrollableList instead.
@@ -147,8 +150,7 @@ void draw() {
 
 //Serial draw method
 
-Serial myPort;  
-String val; 
+
 
 void setup()
 {
