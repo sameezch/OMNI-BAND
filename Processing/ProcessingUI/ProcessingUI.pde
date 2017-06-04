@@ -57,6 +57,7 @@ void customize(DropdownList ddl) {
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
   ddl.setItemHeight(20);
+  ddl.setWidth(200);
   ddl.setBarHeight(15);
   ddl.getCaptionLabel().set("dropdown");
   
