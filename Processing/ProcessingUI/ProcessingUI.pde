@@ -26,6 +26,7 @@ ControlP5 cp5;
 DropdownList d1;
 
 int cnt = 0;
+Chart myChart;
 
 
 // Setup Loop
@@ -33,11 +34,31 @@ void setup() {
   size(700, 400 );
   cp5 = new ControlP5(this);
   
+ 
   d1 = cp5.addDropdownList("myList-d1")
-          .setPosition(100, 100)
+          .setPosition(50, 50)
           ;
           
   customize(d1); // customize the first list
+  //Steup for the chart
+
+  myChart = cp5.addChart("heartrate")
+               .setPosition(300, 50)
+               .setSize(200, 100)
+               .setRange(-20, 20)
+               .setView(Chart.LINE) // use Chart.LINE, Chart.PIE, Chart.AREA, Chart.BAR_CENTERED
+               .setStrokeWeight(1.5)
+               .setColorCaptionLabel(color(40))
+               ;
+
+  myChart.addDataSet("incoming");
+  myChart.setData("incoming", new float[100]);
+ 
+ //Serial draw setup
+  //size(500,500);
+  String portName = Serial.list()[2]; 
+  myPort = new Serial(this, portName, 9600);
+ 
 }
 
 
@@ -46,6 +67,7 @@ void customize(DropdownList ddl) {
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
   ddl.setItemHeight(20);
+  ddl.setWidth(200);
   ddl.setBarHeight(15);
   ddl.getCaptionLabel().set("dropdown");
   
@@ -114,4 +136,21 @@ void controlEvent(ControlEvent theEvent) {
 
 void draw() {
   background(128);
+  
+  //Draw for chart
+  background(200);
+  // unshift: add data from left to right (first in)
+  //myChart.unshift("incoming", (sin(frameCount*0.1)*20));
+  
+  // push: add data from right to left (last in)
+  myChart.unshift("incoming", (sin(frameCount*0.1)*10));
+  
+  //Serial text draw functions and hardcoded port loop
+    if ( myPort.available() > 0) 
+    {  
+    val = myPort.readStringUntil('\n');         
+    } 
+  //println(val); 
+  textAlign(CENTER);
+  text("serial: " +val,250,250);
 }
