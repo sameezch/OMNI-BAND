@@ -146,7 +146,7 @@ void draw() {
   
   float s1 = (sin(frameCount*0.1)*10);
   
-  cp5.addSlider("slider")
+  cp5.addSlider("Temperture")
      .setPosition(100,305)
      .setSize(200,20)
      .setRange(0,10)
