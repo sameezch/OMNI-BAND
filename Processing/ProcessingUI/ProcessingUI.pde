@@ -142,23 +142,6 @@ void draw() {
   myChart.unshift("incoming", (sin(frameCount*0.1)*10));
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void draw()
 {
   if ( myPort.available() > 0) 
