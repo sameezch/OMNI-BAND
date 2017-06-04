@@ -140,15 +140,13 @@ void draw() {
   
   // push: add data from right to left (last in)
   myChart.unshift("incoming", (sin(frameCount*0.1)*10));
-}
-
-void draw()
-{
-  if ( myPort.available() > 0) 
-  {  
-  val = myPort.readStringUntil('\n');         
-  } 
-//println(val); 
-textAlign(CENTER);
-text("serial: " +val,250,250);
+  
+  //Serial text draw functions and hardcoded port loop
+    if ( myPort.available() > 0) 
+    {  
+    val = myPort.readStringUntil('\n');         
+    } 
+  //println(val); 
+  textAlign(CENTER);
+  text("serial: " +val,250,250);
 }
