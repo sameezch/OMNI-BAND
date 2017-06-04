@@ -22,6 +22,7 @@ String val;
 import controlP5.*;
 
 ControlP5 cp5;
+Slider2D s;
 
 DropdownList d1;
 public int slider1 = 32;
@@ -156,6 +157,14 @@ void draw() {
      .plugTo(s1);
      
      ;
+     
+     s = cp5.addSlider2D("wave")
+         .setPosition(350,200)
+         .setSize(100,100)
+         .setMinMax(-10,-10,10,10)
+         .setValue(0,s1)
+         //.disableCrosshair()
+         ;
   
   
   
