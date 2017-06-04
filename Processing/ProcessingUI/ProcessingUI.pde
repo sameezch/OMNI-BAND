@@ -1,30 +1,18 @@
 import processing.serial.*;
 Serial port;
-/**
- *
- * DEPRECATED, use ScrollableList instead.
- * 
- * Control5 DropdownList
- * A dropdownList controller, extends the ListBox controller.
- * the most recently selected dropdownlist item is displayed inside
- * the menu bar of the DropdownList.
- *
- * find a list of public methods available for the DropdownList Controller 
- * at the bottom of this sketch's source code
- *
- *
- * by andreas schlegel, 2012
- * www.sojamo.de/libraries/controlp5
- */
+
 
 import controlP5.*;
 
 ControlP5 cp5;
 
 DropdownList d1;
+public int slider1 = 32;
 
 int cnt = 0;
 Chart myChart;
+Slider slider;
+
 
 void setup() {
   size(700, 400 );
@@ -49,6 +37,8 @@ void setup() {
 
   myChart.addDataSet("incoming");
   myChart.setData("incoming", new float[100]);
+ float s1 = (sin(frameCount*0.1)*10);
+ System.out.println(s1);
  
 }
 
@@ -132,4 +122,18 @@ void draw() {
   
   // push: add data from right to left (last in)
   myChart.unshift("incoming", (sin(frameCount*0.1)*10));
+  
+  float s1 = (sin(frameCount*0.1)*10);
+  
+  cp5.addSlider("slider")
+     .setPosition(100,305)
+     .setSize(200,20)
+     .setRange(0,10)
+     .setValue(s1)
+     .plugTo(s1);
+     
+     ;
+  
+  
+  
 }
