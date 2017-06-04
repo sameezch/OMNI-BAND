@@ -53,6 +53,11 @@ void setup() {
   myChart.addDataSet("incoming");
   myChart.setData("incoming", new float[100]);
  
+ //Serial draw method
+  size(500,500);
+  String portName = Serial.list()[2]; 
+  myPort = new Serial(this, portName, 9600);
+ 
 }
 
 
@@ -148,19 +153,11 @@ void draw() {
 
 
 
-//Serial draw method
 
 
 
-void setup()
-{
-  
-  
-  
-  size(500,500);
-  String portName = Serial.list()[2]; 
-  myPort = new Serial(this, portName, 9600);
-}
+
+
 
 void draw()
 {
