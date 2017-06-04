@@ -133,3 +133,41 @@ void draw() {
   // push: add data from right to left (last in)
   myChart.unshift("incoming", (sin(frameCount*0.1)*10));
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//Serial draw method
+import processing.serial.*;
+
+Serial myPort;  
+String val; 
+
+void setup()
+{
+  
+  
+  
+  size(500,500);
+  String portName = Serial.list()[2]; 
+  myPort = new Serial(this, portName, 9600);
+}
+
+void draw()
+{
+  if ( myPort.available() > 0) 
+  {  
+  val = myPort.readStringUntil('\n');         
+  } 
+//println(val); 
+textAlign(CENTER);
+text("serial: " +val,250,250);
+}
