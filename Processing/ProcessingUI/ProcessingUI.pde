@@ -25,7 +25,7 @@ String val;
 import controlP5.*;
 
 ControlP5 cp5;
-Slider2D s;
+
 
 Slider2D s;
 DropdownList d1;
@@ -69,7 +69,7 @@ void setup() {
   //size(500,500);
 
   //Hard Coded port number can cause crash if not correctly assigned to arduino
-  String portName = Serial.list()[2]; 
+  String portName = Serial.list()[4]; 
   myPort = new Serial(this, portName, 9600);
  
 }
