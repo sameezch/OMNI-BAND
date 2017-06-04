@@ -1,5 +1,21 @@
 import processing.serial.*;
 Serial port;
+/**
+ *
+ * DEPRECATED, use ScrollableList instead.
+ * 
+ * Control5 DropdownList
+ * A dropdownList controller, extends the ListBox controller.
+ * the most recently selected dropdownlist item is displayed inside
+ * the menu bar of the DropdownList.
+ *
+ * find a list of public methods available for the DropdownList Controller 
+ * at the bottom of this sketch's source code
+ *
+ *
+ * by andreas schlegel, 2012
+ * www.sojamo.de/libraries/controlp5
+ */
 
 
 import controlP5.*;
@@ -39,6 +55,11 @@ void setup() {
   myChart.setData("incoming", new float[100]);
  float s1 = (sin(frameCount*0.1)*10);
  System.out.println(s1);
+ 
+ //Serial draw setup
+  size(500,500);
+  String portName = Serial.list()[2]; 
+  myPort = new Serial(this, portName, 9600);
  
 }
 
@@ -136,4 +157,13 @@ void draw() {
   
   
   
+  
+  //Serial text draw functions and hardcoded port loop
+    if ( myPort.available() > 0) 
+    {  
+    val = myPort.readStringUntil('\n');         
+    } 
+  //println(val); 
+  textAlign(CENTER);
+  text("serial: " +val,250,250);
 }
