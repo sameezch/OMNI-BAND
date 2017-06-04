@@ -30,7 +30,7 @@ import processing.serial.*;
 Slider2D s;
 DropdownList d1;
 
-public int slider1 = 32;
+public float s1 = (sin(frameCount*0.1)*10);
 
 int cnt = 0;
 Chart myChart;
@@ -181,12 +181,31 @@ void draw() {
          ;
   
 
-  //Serial text draw functions and hardcoded port loop
-    if ( myPort.available() > 0) 
-    {  
-    val = myPort.readStringUntil('\n');         
-    } 
-  //println(val); 
-  textAlign(CENTER);
-  text("serial: " +val,250,250);
+ cp5.addNumberbox("HR")
+     .setPosition(100,160)
+     .setSize(100,20)
+     .setScrollSensitivity(1.1)
+     .setValue(s1)
+     ;
+     
+ cp5.addNumberbox("Temp")
+     .setPosition(100,195)
+     .setSize(100,20)
+     .setScrollSensitivity(1.1)
+     .setValue(s1)
+     ;
+     
+ cp5.addNumberbox("Accel X")
+     .setPosition(100,230)
+     .setSize(40,20)
+     .setScrollSensitivity(1.1)
+     .setValue(s1)
+     ;
+     
+  cp5.addNumberbox("Accel Y")
+     .setPosition(140,230)
+     .setSize(40,20)
+     .setScrollSensitivity(1.1)
+     .setValue(s1)
+     ;
 }
