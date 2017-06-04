@@ -1,5 +1,6 @@
 import processing.serial.*;
-Serial port;
+Serial myPort;
+String val;
 /**
  *
  * DEPRECATED, use ScrollableList instead.
