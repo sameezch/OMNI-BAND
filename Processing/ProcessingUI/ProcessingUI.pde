@@ -1,6 +1,8 @@
 import processing.serial.*;
-Serial myPort;
-String val;
+//from omni.pde
+Serial myPort;  
+String val; 
+
 /**
  *
  * DEPRECATED, use ScrollableList instead.
@@ -19,12 +21,14 @@ String val;
  */
 
 
+// Dependancy Import and Variable Decleration
 import controlP5.*;
 
 ControlP5 cp5;
-Slider2D s;
 
+Slider2D s;
 DropdownList d1;
+
 public int slider1 = 32;
 
 int cnt = 0;
@@ -32,6 +36,8 @@ Chart myChart;
 Slider slider;
 
 
+
+// Setup Loop
 void setup() {
   size(700, 400 );
   cp5 = new ControlP5(this);
@@ -60,6 +66,7 @@ void setup() {
  
  //Serial draw setup
   //size(500,500);
+
   //Hard Coded port number can cause crash if not correctly assigned to arduino
   String portName = Serial.list()[2]; 
   myPort = new Serial(this, portName, 9600);
@@ -67,6 +74,7 @@ void setup() {
 }
 
 
+// Drop Down List UI Elements
 void customize(DropdownList ddl) {
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
@@ -84,8 +92,7 @@ void customize(DropdownList ddl) {
   ddl.setColorActive(color(255, 128));
 }
 
-
-
+// Key Press Handling Method If Statment Loop
 void keyPressed() {
   // some key events to change the properties of DropdownList d1
   if (key=='1') {
@@ -120,6 +127,8 @@ void keyPressed() {
   }
 }
 
+
+// Select Port Method
 void controlEvent(ControlEvent theEvent) {
   // DropdownList is of type ControlGroup.
   // A controlEvent will be triggered from inside the ControlGroup class.
@@ -136,6 +145,7 @@ void controlEvent(ControlEvent theEvent) {
   }
 }
 
+
 void draw() {
   background(128);
   
@@ -147,6 +157,7 @@ void draw() {
   // push: add data from right to left (last in)
   myChart.unshift("incoming", (sin(frameCount*0.1)*10));
   
+
   float s1 = (sin(frameCount*0.1)*10);
   
   cp5.addSlider("Temperture")
@@ -166,9 +177,7 @@ void draw() {
          //.disableCrosshair()
          ;
   
-  
-  
-  
+
   //Serial text draw functions and hardcoded port loop
     if ( myPort.available() > 0) 
     {  
