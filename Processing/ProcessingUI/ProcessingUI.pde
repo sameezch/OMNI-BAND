@@ -17,29 +17,29 @@ Serial port;
  * www.sojamo.de/libraries/controlp5
  */
 
+// Dependancy Import and Variable Decleration
 import controlP5.*;
 
 ControlP5 cp5;
-
 DropdownList d1;
 
 int cnt = 0;
 
+
+// Setup Loop
 void setup() {
   size(700, 400 );
   cp5 = new ControlP5(this);
   
- 
   d1 = cp5.addDropdownList("myList-d1")
           .setPosition(100, 100)
           ;
           
   customize(d1); // customize the first list
-  
- 
 }
 
 
+// Drop Down List UI Elements
 void customize(DropdownList ddl) {
   // a convenience function to customize a DropdownList
   ddl.setBackgroundColor(color(190));
@@ -56,8 +56,7 @@ void customize(DropdownList ddl) {
   ddl.setColorActive(color(255, 128));
 }
 
-
-
+// Key Press Handling Method If Statment Loop
 void keyPressed() {
   // some key events to change the properties of DropdownList d1
   if (key=='1') {
@@ -92,6 +91,8 @@ void keyPressed() {
   }
 }
 
+
+// Select Port Method
 void controlEvent(ControlEvent theEvent) {
   // DropdownList is of type ControlGroup.
   // A controlEvent will be triggered from inside the ControlGroup class.
@@ -107,6 +108,7 @@ void controlEvent(ControlEvent theEvent) {
     println("event from controller : "+theEvent.getController().getValue()+" from "+theEvent.getController());
   }
 }
+
 
 void draw() {
   background(128);
