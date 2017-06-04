@@ -59,6 +59,7 @@ void setup() {
  
  //Serial draw setup
   //size(500,500);
+  //Hard Coded port number can cause crash if not correctly assigned to arduino
   String portName = Serial.list()[2]; 
   myPort = new Serial(this, portName, 9600);
  
