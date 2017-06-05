@@ -110,10 +110,7 @@ delay(10);
   lsm.read();
   Serial.print("AX: "); Serial.print((int)lsm.accelData.x); Serial.print(" ");
   Serial.print("AY: "); Serial.print((int)lsm.accelData.y); Serial.print(" ");
-  Serial.print("AZ: "); Serial.print((int)lsm.accelData.z); Serial.print(" ");
-  Serial.print("MX: "); Serial.print((int)lsm.magData.x);   Serial.print(" ");
-  Serial.print("MY: "); Serial.print((int)lsm.magData.y);   Serial.print(" ");
-  Serial.print("MZ: "); Serial.println((int)lsm.magData.z); Serial.print(" ");
+  
   delay(100);
   //
 }
