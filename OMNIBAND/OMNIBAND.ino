@@ -110,7 +110,7 @@ delay(10);
   lsm.read();
   Serial.print("AX: "); Serial.print((int)lsm.accelData.x); Serial.print(" ");
   Serial.print("AY: "); Serial.print((int)lsm.accelData.y); Serial.print(" ");
-  
+  Serial.println();
   delay(100);
   //
 }
