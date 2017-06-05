@@ -25,7 +25,7 @@ String val;
 import controlP5.*;
 
 ControlP5 cp5;
-
+import processing.serial.*;
 
 Slider2D s;
 DropdownList d1;
@@ -36,6 +36,8 @@ int cnt = 0;
 Chart myChart;
 Slider slider;
 
+public float xAxis;
+public float yAxis;
 
 
 // Setup Loop
