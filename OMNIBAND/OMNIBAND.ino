@@ -108,8 +108,8 @@ delay(10);
   
   // For Accelerometer
   lsm.read();
-  Serial.print("AX: "); Serial.print((int)lsm.accelData.x); Serial.print(" ");
-  Serial.print("AY: "); Serial.print((int)lsm.accelData.y); Serial.print(" ");
+  Serial.print("X: "); Serial.print((int)lsm.accelData.x); Serial.print(" ");
+  Serial.print("Y: "); Serial.print((int)lsm.accelData.y); Serial.print(" ");
   Serial.println();
   delay(100);
   //
